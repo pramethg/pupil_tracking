@@ -11,7 +11,7 @@ import random
 from PIL import Image
 from torch.utils.data import Dataset
 import torchvision.transforms.functional as TF
-import torchvision.transforms.v2 as transforms
+import torchvision.transforms as transforms
 from torchvision.transforms import (
     InterpolationMode as InterpMode,
 )  # note: NOT v2 InterpolationMode
