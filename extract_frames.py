@@ -14,7 +14,7 @@ import numpy as np
 from tqdm import tqdm
 
 
-def extract_selected_frames(video_path, out_dir, extraction_fps=5, max_frames=0):
+def extract_selected_frames(video_path, out_dir, extraction_fps = 10, max_frames = 10000):
     """Extract evenly spaced frames. max_frames=0 means no limit (extract all)."""
     video_path = Path(video_path)
     video_name = video_path.stem
