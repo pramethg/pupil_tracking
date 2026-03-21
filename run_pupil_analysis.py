@@ -155,7 +155,7 @@ def main():
     parser.add_argument("--pred_thresh", type=float, default=0.7)
     parser.add_argument("--mask_transparency", type=float, default=0.1)
     parser.add_argument("--extraction_fps", type=float, default=5)
-    parser.add_argument("--max_frames", type=int, default=10000)
+    parser.add_argument("--max_frames", type=int, default=0, help="Max frames to extract (0 = no limit)")
     args = parser.parse_args()
 
     # Handle extraction logic

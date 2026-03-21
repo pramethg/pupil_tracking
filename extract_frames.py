@@ -14,7 +14,8 @@ import numpy as np
 from tqdm import tqdm
 
 
-def extract_selected_frames(video_path, out_dir, extraction_fps=5, max_frames=10000):
+def extract_selected_frames(video_path, out_dir, extraction_fps=5, max_frames=0):
+    """Extract evenly spaced frames. max_frames=0 means no limit (extract all)."""
     video_path = Path(video_path)
     video_name = video_path.stem
     out_dir = Path(out_dir)
@@ -31,7 +32,8 @@ def extract_selected_frames(video_path, out_dir, extraction_fps=5, max_frames=10
     duration = frame_count / fps
     extraction_fps = min(extraction_fps, fps)
     n_frames = round(duration * extraction_fps)
-    n_frames = min(max_frames, n_frames)
+    if max_frames > 0:
+        n_frames = min(max_frames, n_frames)
     extraction_fps = n_frames / duration
     print(f"Extracting {n_frames} frames at ~{extraction_fps:.2f} fps")
 
@@ -82,8 +84,8 @@ def main():
     parser.add_argument(
         "--max_frames",
         type=int,
-        default=10000,
-        help="Maximum number of frames to extract (default: 10000)",
+        default=0,
+        help="Maximum number of frames to extract (0 = no limit, default: 0)",
     )
 
     args = parser.parse_args()
